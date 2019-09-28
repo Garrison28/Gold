@@ -14,8 +14,8 @@ game.setAttribute("width", getComputedStyle(game)["width"])
 var playerStart = {
     x: 50,
     y: 100,
-    width: 50,
-    height: 50,
+    width: 25,
+    height: 25,
     color: "gold",
     alive: true,
     velocity: 10,
@@ -28,8 +28,8 @@ var playerStart = {
 var enemieOneStart = {
     x: 300,
     y: 350,
-    width: 75,
-    height: 75,
+    width: 25,
+    height: 25,
     color: "red",
     alive: true,
     velocity: 10,
@@ -42,8 +42,8 @@ var enemieOneStart = {
 var enemieTwoStart = {
     x: 450,
     y: 600,
-    width: 75,
-    height: 75,
+    width: 25,
+    height: 25,
     color: "red",
     alive: true,
     velocity: 10,
@@ -56,8 +56,8 @@ var enemieTwoStart = {
 var goldObjStart = {
     x: 200,
     y: 200,
-    width: 25,
-    height: 25,
+    width: 15,
+    height: 15,
     color: "#ffef96",
     alive: true,
     render: function () {
@@ -127,21 +127,18 @@ function allMovement(e) {
 }
 
 function enemyOneMovement() {
-    if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
-        enemyOne.velocity *= -1
-    }
-    // if (enemyOne.y < 0 || enemyOne.y > game.height - enemyOne.height) {
+    
+    // if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
     //     enemyOne.velocity *= -1
     // }
-    enemyOne.x += enemyOne.velocity
-    // enemyOne.y += enemyOne.velocity
+    // enemyOne.x += enemyOne.velocity
 }
 
 function enemyTwoMovement() {
-    if (enemyTwo.y < 0 || enemyTwo.y > game.height - enemyTwo.height) {
-        enemyTwo.velocity *= -1
-    }
-    enemyTwo.y += enemyTwo.velocity
+    // if (enemyTwo.y < 0 || enemyTwo.y > game.height - enemyTwo.height) {
+    //     enemyTwo.velocity *= -1
+    // }
+    // enemyTwo.y += enemyTwo.velocity
 }
 
 
