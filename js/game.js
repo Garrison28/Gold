@@ -19,6 +19,8 @@ var playerStart = {
     color: "gold",
     alive: true,
     velocity: 10,
+    gold: 0,
+    hp: 100,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -47,6 +49,7 @@ var enemieTwoStart = {
     color: "red",
     alive: true,
     velocity: 10,
+    hp: 50,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -60,6 +63,7 @@ var goldObjStart = {
     height: 15,
     color: "#ffef96",
     alive: true,
+    hp: 50,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -98,7 +102,19 @@ function detectHit() {
         && player.y <= goldenO.y + goldenO.height
         && player.y + player.height > goldenO.y) {
             goldenO.alive = false
+            player.gold = player.gold++
+            console.log('gold added')
         }
+    if (enemyOne.x <= player.x + player.width
+        && enemyOne.x + enemyOne.width >= player.x
+        && enemyOne.y <= player.y + player.height
+        && enemyOne.y + enemyOne.height >= player.y) {
+            for (var i = 0; i < player.hp; i--) {
+                player.hp = 0
+            }
+            console.log(player.hp)
+        }
+    
 }
 
 function allMovement(e) {
@@ -127,7 +143,7 @@ function allMovement(e) {
 }
 
 function enemyOneMovement() {
-    
+
     // if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
     //     enemyOne.velocity *= -1
     // }
@@ -140,6 +156,12 @@ function enemyTwoMovement() {
     // }
     // enemyTwo.y += enemyTwo.velocity
 }
+
+// function gameWon() {
+//     if (player.gold === 1) {
+//         console.log('you Win!')
+//     }
+// }
 
 
 
