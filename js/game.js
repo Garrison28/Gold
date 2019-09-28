@@ -40,8 +40,8 @@ var enemieOneStart = {
 }
 
 var enemieTwoStart = {
-    x: 300,
-    y: 350,
+    x: 450,
+    y: 600,
     width: 75,
     height: 75,
     color: "red",
@@ -76,6 +76,29 @@ let goldenO = { ...goldObjStart }
 function reset() {
     player = Object.assign({}, playerStart)
     enemyOne = Object.assign({}, enemieOneStart)
+    enemyTwo = Object.assign({}, enemieTwoStart)
+    goldenO = Object.assign({}, goldObjStart)
+}
+
+function detectHit() {
+    if (player.x <= enemyOne.x + enemyOne.width
+        && player.x + player.width >= enemyOne.x
+        && player.y <= enemyOne.y + enemyOne.height
+        && player.y + player.height >= enemyOne.y) {
+            enemyOne.alive = false
+        }
+    if (player.x <= enemyTwo.x + enemyTwo.width
+        && player.x + player.width >= enemyTwo.x
+        && player.y <= enemyTwo.y + enemyTwo.height
+        && player.y + player.height >= enemyTwo.y){
+            enemyTwo.alive = false
+        }
+    if (player.x <= goldenO.x + goldenO.width
+        && player.x + player.width >= goldenO.x
+        && player.y <= goldenO.y + goldenO.height
+        && player.y + player.height > goldenO.y) {
+            goldenO.alive = false
+        }
 }
 
 function allMovement(e) {
@@ -103,13 +126,43 @@ function allMovement(e) {
     }
 }
 
+function enemyOneMovement() {
+    if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
+        enemyOne.velocity *= -1
+    }
+    // if (enemyOne.y < 0 || enemyOne.y > game.height - enemyOne.height) {
+    //     enemyOne.velocity *= -1
+    // }
+    enemyOne.x += enemyOne.velocity
+    // enemyOne.y += enemyOne.velocity
+}
+
+function enemyTwoMovement() {
+    if (enemyTwo.y < 0 || enemyTwo.y > game.height - enemyTwo.height) {
+        enemyTwo.velocity *= -1
+    }
+    enemyTwo.y += enemyTwo.velocity
+}
+
+
+
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height)
     if (enemyOne.alive) {
         enemyOne.render()
+        detectHit()
+        enemyOneMovement()
+    }
+    if (enemyTwo.alive) {
+        enemyTwo.render()
+        detectHit()
+        enemyTwoMovement()
+    }
+    if (goldenO.alive) {
+        goldenO.render()
+        detectHit()
     }
     player.render()
-    goldenO.render()
 }
 
 document.addEventListener('keydown', allMovement)
