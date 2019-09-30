@@ -1,6 +1,6 @@
 console.log("Working")
 
-let game = document.getElementById('game')
+let game = document.getElementById('gameDisplay')
 let ctx = game.getContext('2d')
 
 console.log(getComputedStyle(game)["width"])
@@ -8,6 +8,10 @@ console.log(game.width)
 
 game.setAttribute("height", getComputedStyle(game)["height"])
 game.setAttribute("width", getComputedStyle(game)["width"])
+
+// const startDisplay = document.getElementById('startDisplay')
+// const gameDisplay = document.getElementById('gameDisplay')
+// const  loseDisplay = document.getElementById('loseDisplay')
 
 /*--------------- Game Assets --------------------*/
 
@@ -20,7 +24,7 @@ var playerStart = {
     alive: true,
     velocity: 10,
     gold: 0,
-    hp: 100,
+    health: 100,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -28,13 +32,14 @@ var playerStart = {
 }
 
 var enemieOneStart = {
-    x: 300,
-    y: 350,
+    x: Math.floor(Math.random(game.getAttribute('width'))),
+    y: Math.floor(Math.random(game.getAttribute('height'))),
     width: 25,
     height: 25,
     color: "red",
     alive: true,
     velocity: 10,
+    health: 50,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -42,14 +47,14 @@ var enemieOneStart = {
 }
 
 var enemieTwoStart = {
-    x: 450,
-    y: 600,
+    x: Math.floor(Math.random(game.getAttribute('width'))),
+    y: Math.floor(Math.random(game.getAttribute('height'))),
     width: 25,
     height: 25,
     color: "red",
     alive: true,
     velocity: 10,
-    hp: 50,
+    health: 50,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -63,7 +68,6 @@ var goldObjStart = {
     height: 15,
     color: "#ffef96",
     alive: true,
-    hp: 50,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -84,35 +88,60 @@ function reset() {
     goldenO = Object.assign({}, goldObjStart)
 }
 
+function startGame() {
+    showDisplay();
+}
+
+function showDisplay(display) {
+    if (display === startDisplay) {
+        startDisplay.style.display = "block";
+        gameDisplay.style.display = "none";
+        loseDisplay.style.display = "none";
+    } else if (display === gameDisplay) {
+        startDisplay.style.display = "none";
+        gameDisplay.style.display = "block";
+        loseDisplay.style.display = "none";
+    } else if (display === loseDisplay) {
+        startDisplay.style.display = "none";
+        gameDisplay.style.display = "none";
+        loseDisplay.style.display = "block";
+    }
+}
+
 function detectHit() {
-    if (player.x <= enemyOne.x + enemyOne.width
-        && player.x + player.width >= enemyOne.x
-        && player.y <= enemyOne.y + enemyOne.height
-        && player.y + player.height >= enemyOne.y) {
-            enemyOne.alive = false
-        }
-    if (player.x <= enemyTwo.x + enemyTwo.width
-        && player.x + player.width >= enemyTwo.x
-        && player.y <= enemyTwo.y + enemyTwo.height
-        && player.y + player.height >= enemyTwo.y){
-            enemyTwo.alive = false
-        }
+    // if (player.x <= enemyOne.x + enemyOne.width
+    //     && player.x + player.width >= enemyOne.x
+    //     && player.y <= enemyOne.y + enemyOne.height
+    //     && player.y + player.height >= enemyOne.y) {
+    //         enemyOne.alive = false
+    //     }
+    // if (player.x <= enemyTwo.x + enemyTwo.width
+    //     && player.x + player.width >= enemyTwo.x
+    //     && player.y <= enemyTwo.y + enemyTwo.height
+    //     && player.y + player.height >= enemyTwo.y){
+    //         enemyTwo.alive = false
+    //     }
     if (player.x <= goldenO.x + goldenO.width
         && player.x + player.width >= goldenO.x
         && player.y <= goldenO.y + goldenO.height
         && player.y + player.height > goldenO.y) {
             goldenO.alive = false
-            player.gold = player.gold++
-            console.log('gold added')
+            // gameWon()
+            
         }
     if (enemyOne.x <= player.x + player.width
         && enemyOne.x + enemyOne.width >= player.x
         && enemyOne.y <= player.y + player.height
         && enemyOne.y + enemyOne.height >= player.y) {
-            for (var i = 0; i < player.hp; i--) {
-                player.hp = 0
-            }
-            console.log(player.hp)
+            player.alive = false
+            gameLost()
+        }
+    if (enemyTwo.x <= player.x + player.width
+        && enemyTwo.x + enemyTwo.width >= player.x
+        && enemyTwo.y <= player.y + player.height
+        && enemyTwo.y + enemyTwo.height >= player.y) {
+            player.alive = false
+            gameLost()
         }
     
 }
@@ -144,26 +173,35 @@ function allMovement(e) {
 
 function enemyOneMovement() {
 
-    // if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
-    //     enemyOne.velocity *= -1
-    // }
-    // enemyOne.x += enemyOne.velocity
+    if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
+        enemyOne.velocity *= -1
+    }
+    enemyOne.x += enemyOne.velocity
 }
 
 function enemyTwoMovement() {
-    // if (enemyTwo.y < 0 || enemyTwo.y > game.height - enemyTwo.height) {
-    //     enemyTwo.velocity *= -1
-    // }
-    // enemyTwo.y += enemyTwo.velocity
+    if (enemyTwo.y < 0 || enemyTwo.y > game.height - enemyTwo.height) {
+        enemyTwo.velocity *= -1
+    }
+    enemyTwo.y += enemyTwo.velocity
 }
 
-// function gameWon() {
-//     if (player.gold === 1) {
-//         console.log('you Win!')
-//     }
-// }
+function gameWon() {
+    if (goldenO.alive === false) {
+        player.gold++
+        console.log('you Win!')
+    }
+}
 
+function gameLost() {
+    if (player.alive === false) {
+        document.getElementById('gameDisplay').style.display = "none"
+        document.getElementById('loseDisplay').style.display = "block"
 
+        console.log("you Lose")
+        
+    }
+}
 
 function gameLoop() {
     ctx.clearRect(0, 0, game.width, game.height)
@@ -181,8 +219,15 @@ function gameLoop() {
         goldenO.render()
         detectHit()
     }
-    player.render()
+    if (player.alive) {
+        player.render()
+        detectHit()
+        
+    }
+    
 }
+
+
 
 document.addEventListener('keydown', allMovement)
 var loop = setInterval(gameLoop, 60)

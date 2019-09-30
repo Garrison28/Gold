@@ -22,7 +22,20 @@ body {
 
 canvas {
     background-color: green;
-    width: 100%;
-    height: 100;
+    width: 80%;
+    height: 80%;
 }
+
+#loseDisplay {
+    display: block;
+    height: 50vh;
+    width: 50vw;
+    font-size: 100px;
+    text-align: center;
+    color: "gold";
+    background-color: black;
+}
+
+
+
 
