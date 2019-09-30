@@ -22,13 +22,13 @@ body {
 
 canvas {
     background-color: green;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100;
 }
 
 #loseDisplay {
-    height: 50vh;
-    width: 50vw;
+    height: 100;
+    width: 100%;
     font-size: 100px;
     text-align: center;
     color: gold;
@@ -36,8 +36,8 @@ canvas {
 }
 
 #winDisplay {
-    height: 50vh;
-    width: 50vw;
+    height: 100;
+    width: 100%;
     font-size: 100px;
     text-align: center;
     color: gold;
