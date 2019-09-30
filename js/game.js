@@ -5,14 +5,15 @@ let ctx = game.getContext('2d')
 
 console.log(getComputedStyle(game)["width"])
 console.log(game.width)
+console.log(game.height)
 
 game.setAttribute("height", getComputedStyle(game)["height"])
 game.setAttribute("width", getComputedStyle(game)["width"])
-
-// const startDisplay = document.getElementById('startDisplay')
-// const gameDisplay = document.getElementById('gameDisplay')
-// const  loseDisplay = document.getElementById('loseDisplay')
-
+// Game displays based on screen 
+const startDisplay = document.getElementById('startDisplay')
+const gameDisplay = document.getElementById('gameDisplay')
+const  loseDisplay = document.getElementById('loseDisplay')
+const winDisplay = document.getElementById('winDisplay')
 /*--------------- Game Assets --------------------*/
 
 var playerStart = {
@@ -33,7 +34,7 @@ var playerStart = {
 
 var enemieOneStart = {
     x: Math.floor(Math.random(game.getAttribute('width'))),
-    y: Math.floor(Math.random(game.getAttribute('height'))),
+    y: 0,
     width: 25,
     height: 25,
     color: "red",
@@ -47,8 +48,8 @@ var enemieOneStart = {
 }
 
 var enemieTwoStart = {
-    x: Math.floor(Math.random(game.getAttribute('width'))),
-    y: Math.floor(Math.random(game.getAttribute('height'))),
+    x: 0,
+    y: Math.floor(Math.random(game.height)),
     width: 25,
     height: 25,
     color: "red",
@@ -81,70 +82,44 @@ let goldenO = { ...goldObjStart }
 
 /*-------------------- Game Funcions -----------------------*/
 
-function reset() {
-    player = Object.assign({}, playerStart)
-    enemyOne = Object.assign({}, enemieOneStart)
-    enemyTwo = Object.assign({}, enemieTwoStart)
-    goldenO = Object.assign({}, goldObjStart)
-}
+var loop;
+document.addEventListener('keydown', allMovement)
+// initilize the game setup
+function gameInit() {
+    loseDisplay.style.display = 'none'
+    winDisplay.style.display = 'none'
+    //start the gameloop for the game board
+    var loop = setInterval(gameLoop, 60)
+    function gameLoop() {
+        ctx.clearRect(0, 0, game.width, game.height)
+        if (enemyOne.alive) {
+            enemyOne.render()
+            detectHit()
+            enemyOneMovement()
+        }
+        if (enemyTwo.alive) {
+            enemyTwo.render()
+            detectHit()
+            enemyTwoMovement()
+        }
+        if (goldenO.alive) {
+            goldenO.render()
+            detectHit()
+        }
+        if (player.alive) {
+            player.render()
+            detectHit()
 
-function startGame() {
-    showDisplay();
-}
-
-function showDisplay(display) {
-    if (display === startDisplay) {
-        startDisplay.style.display = "block";
-        gameDisplay.style.display = "none";
-        loseDisplay.style.display = "none";
-    } else if (display === gameDisplay) {
-        startDisplay.style.display = "none";
-        gameDisplay.style.display = "block";
-        loseDisplay.style.display = "none";
-    } else if (display === loseDisplay) {
-        startDisplay.style.display = "none";
-        gameDisplay.style.display = "none";
-        loseDisplay.style.display = "block";
+        }
     }
-}
-
-function detectHit() {
-    // if (player.x <= enemyOne.x + enemyOne.width
-    //     && player.x + player.width >= enemyOne.x
-    //     && player.y <= enemyOne.y + enemyOne.height
-    //     && player.y + player.height >= enemyOne.y) {
-    //         enemyOne.alive = false
-    //     }
-    // if (player.x <= enemyTwo.x + enemyTwo.width
-    //     && player.x + player.width >= enemyTwo.x
-    //     && player.y <= enemyTwo.y + enemyTwo.height
-    //     && player.y + player.height >= enemyTwo.y){
-    //         enemyTwo.alive = false
-    //     }
-    if (player.x <= goldenO.x + goldenO.width
-        && player.x + player.width >= goldenO.x
-        && player.y <= goldenO.y + goldenO.height
-        && player.y + player.height > goldenO.y) {
-            goldenO.alive = false
-            // gameWon()
-            
-        }
-    if (enemyOne.x <= player.x + player.width
-        && enemyOne.x + enemyOne.width >= player.x
-        && enemyOne.y <= player.y + player.height
-        && enemyOne.y + enemyOne.height >= player.y) {
-            player.alive = false
-            gameLost()
-        }
-    if (enemyTwo.x <= player.x + player.width
-        && enemyTwo.x + enemyTwo.width >= player.x
-        && enemyTwo.y <= player.y + player.height
-        && enemyTwo.y + enemyTwo.height >= player.y) {
-            player.alive = false
-            gameLost()
-        }
     
-}
+    allMovement()
+    detectHit() 
+    enemyOneMovement()
+    enemyTwoMovement() 
+    gameWon()
+    loseGame()
+};
 
 function allMovement(e) {
     switch (e.keyCode) {
@@ -171,6 +146,43 @@ function allMovement(e) {
     }
 }
 
+function detectHit() {
+    // if (player.x <= enemyOne.x + enemyOne.width
+    //     && player.x + player.width >= enemyOne.x
+    //     && player.y <= enemyOne.y + enemyOne.height
+    //     && player.y + player.height >= enemyOne.y) {
+    //         enemyOne.alive = false
+    //     }
+    // if (player.x <= enemyTwo.x + enemyTwo.width
+    //     && player.x + player.width >= enemyTwo.x
+    //     && player.y <= enemyTwo.y + enemyTwo.height
+    //     && player.y + player.height >= enemyTwo.y){
+    //         enemyTwo.alive = false
+    //     }
+    if (player.x <= goldenO.x + goldenO.width
+        && player.x + player.width >= goldenO.x
+        && player.y <= goldenO.y + goldenO.height
+        && player.y + player.height > goldenO.y) {
+        goldenO.alive = false
+        
+
+    }
+    if (enemyOne.x <= player.x + player.width
+        && enemyOne.x + enemyOne.width >= player.x
+        && enemyOne.y <= player.y + player.height
+        && enemyOne.y + enemyOne.height >= player.y) {
+        player.alive = false
+        
+    }
+    if (enemyTwo.x <= player.x + player.width
+        && enemyTwo.x + enemyTwo.width >= player.x
+        && enemyTwo.y <= player.y + player.height
+        && enemyTwo.y + enemyTwo.height >= player.y) {
+        player.alive = false
+        
+    }
+}
+
 function enemyOneMovement() {
 
     if (enemyOne.x < 0 || enemyOne.x > game.width - enemyOne.width) {
@@ -188,46 +200,22 @@ function enemyTwoMovement() {
 
 function gameWon() {
     if (goldenO.alive === false) {
-        player.gold++
+        document.getElementById('gameDisplay').style.display = "none"
+        document.getElementById('winDisplay').style.display = "block"
         console.log('you Win!')
+        clearInterval(loop)
     }
 }
 
-function gameLost() {
+function loseGame() {
     if (player.alive === false) {
         document.getElementById('gameDisplay').style.display = "none"
         document.getElementById('loseDisplay').style.display = "block"
-
+        
         console.log("you Lose")
-        
+        clearInterval(loop)
     }
 }
 
-function gameLoop() {
-    ctx.clearRect(0, 0, game.width, game.height)
-    if (enemyOne.alive) {
-        enemyOne.render()
-        detectHit()
-        enemyOneMovement()
-    }
-    if (enemyTwo.alive) {
-        enemyTwo.render()
-        detectHit()
-        enemyTwoMovement()
-    }
-    if (goldenO.alive) {
-        goldenO.render()
-        detectHit()
-    }
-    if (player.alive) {
-        player.render()
-        detectHit()
-        
-    }
-    
-}
 
-
-
-document.addEventListener('keydown', allMovement)
-var loop = setInterval(gameLoop, 60)
+gameInit()

@@ -27,12 +27,20 @@ canvas {
 }
 
 #loseDisplay {
-    display: block;
     height: 50vh;
     width: 50vw;
     font-size: 100px;
     text-align: center;
-    color: "gold";
+    color: gold;
+    background-color: black;
+}
+
+#winDisplay {
+    height: 50vh;
+    width: 50vw;
+    font-size: 100px;
+    text-align: center;
+    color: gold;
     background-color: black;
 }
 
