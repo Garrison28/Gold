@@ -89,7 +89,7 @@ function gameInit() {
     loseDisplay.style.display = 'none'
     winDisplay.style.display = 'none'
     //start the gameloop for the game board
-    var loop = setInterval(gameLoop, 60)
+    loop = setInterval(gameLoop, 60)
     function gameLoop() {
         ctx.clearRect(0, 0, game.width, game.height)
         if (enemyOne.alive) {
@@ -111,14 +111,11 @@ function gameInit() {
             detectHit()
 
         }
+        checkGame()
     }
-    
-    allMovement()
     detectHit() 
     enemyOneMovement()
-    enemyTwoMovement() 
-    gameWon()
-    loseGame()
+    enemyTwoMovement()
 };
 
 function allMovement(e) {
@@ -207,7 +204,7 @@ function gameWon() {
     }
 }
 
-function loseGame() {
+function gameLost() {
     if (player.alive === false) {
         document.getElementById('gameDisplay').style.display = "none"
         document.getElementById('loseDisplay').style.display = "block"
@@ -217,5 +214,11 @@ function loseGame() {
     }
 }
 
+function checkGame() {
+    if (player.alive === true) {
+        gameWon()
+    }
+    gameLost()
+}
 
 gameInit()
