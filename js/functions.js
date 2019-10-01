@@ -78,3 +78,84 @@ function enemyFiveMovement() {
     }
     enemyFive.x += enemyFive.velocity
 }
+
+function enemySixMovement() {
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+    if (enemySix.y < 0 || enemySix.y > game.height - enemySix.height) {
+        enemySix.velocity *= -1
+    }
+    enemySix.y += enemySix.velocity
+}
+
+function enemySevenMovement() {
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+    if (enemySeven.x < 0 || enemySeven.x > game.width - enemySeven.width) {
+        enemySeven.velocity *= -1
+    }
+    enemySeven.x += enemySeven.velocity
+}
+
+function enemyEightMovement() {
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+    if (enemyEight.y < 0 || enemyEight.y > game.height - enemyEight.height) {
+        enemyEight.velocity *= -1
+    }
+    enemyEight.y += enemyEight.velocity
+}
+
+function enemyNineMovement() {
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+    if (enemyNine.x < 0 || enemyNine.x > game.width - enemyNine.width) {
+        enemyNine.velocity *= -1
+    }
+    enemyNine.x += enemyNine.velocity
+}
+
+function enemyTenMovement() {
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+    if (enemyTen.y < 0 || enemyTen.y > game.height - enemyTen.height) {
+        enemyTen.velocity *= -1
+    }
+    enemyTen.y += enemyTen.velocity
+}
+

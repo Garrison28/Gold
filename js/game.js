@@ -10,27 +10,32 @@ const winDisplay = document.getElementById('winDisplay')
 
 function reset() {
     console.log('reset')
-    player = Object.assign({}, playerStart)
-    enemyOne = Object.assign({}, enemyOneStart)
-    enemyTwo = Object.assign({}, enemyTwoStart)
-    enemyThree = Object.assign({}, enemyThreeStart)
-    enemyFour = Object.assign({}, enemyFourStart)
-    enemyFive = Object.assign({}, enemyFiveStart)
-    goldenO = Object.assign({}, goldenObjStart)
-    goldenOTwo = Object.assign({}, goldenObjTwoStart)
-    goldenOThree = Object.assign({}, goldenObjThreeStart)
-    goldenOFour = Object.assign({}, goldenObjFourStart)
+    player = { ...playerStart }
+    enemyOne = { ...enemyOneStart }
+    enemyTwo = { ...enemyTwoStart }
+    enemyThree = { ...enemyThreeStart }
+    enemyFour = { ...enemyFourStart }
+    enemyFive = {...enemyFiveStart}
+    enemySix = {...enemySixStart}
+    enemySeven = {...enemySevenStart}
+    enemyEight = {...enemyEightStart}
+    enemyNine = {... enemyNineStart}
+    enemyTen = {...enemyTenStart}
+    goldenO = { ...goldenObjStart }
+    goldenOTwo = {...goldenObjTwoStart}
+    goldenOThree = {...goldenObjThreeStart}
+    goldenOFour = {...goldenObjFourStart}
     gameDisplayOne.style.display = 'block'
-    gameInit()
+    gameInitLevel1()
 }
 
-gameInit()
+gameInitLevel1()
 
 
 var loop;
 document.addEventListener('keydown', allMovement)
 // initilize the game setup
-function gameInit() {
+function gameInitLevel1() {
     loseDisplay.style.display = 'none'
     winDisplay.style.display = 'none'
     document.getElementById('reset').style.display = 'none'
@@ -64,6 +69,31 @@ function gameInit() {
             detectHit()
             enemyFiveMovement()
         }
+        if (enemySix.alive) {
+            enemySix.render()
+            detectHit()
+            enemySixMovement()
+        }
+        if (enemySeven.alive) {
+            enemySeven.render()
+            detectHit()
+            enemySevenMovement()
+        }
+        if (enemyEight.alive) {
+            enemyEight.render()
+            detectHit()
+            enemyEightMovement()
+        }
+        if (enemyNine.alive) {
+            enemyNine.render()
+            detectHit()
+            enemyNineMovement()
+        }
+        if (enemyTen.alive) {
+            enemyTen.render()
+            detectHit()
+            enemyTenMovement()
+        }
         if (goldenO.alive) {
             goldenO.render()
             detectHit()
@@ -88,11 +118,16 @@ function gameInit() {
         checkGame()
     }
     detectHit()
-    enemyOneMovement()
-    enemyTwoMovement()
-    enemyThreeMovement()
-    enemyFourMovement()
-    enemyFiveMovement()
+    // enemyOneMovement()
+    // enemyTwoMovement()
+    // enemyThreeMovement()
+    // enemyFourMovement()
+    // enemyFiveMovement()
+    // enemySixMovement()
+    // enemySevenMovement()
+    // enemyEightMovement()
+    // enemyNineMovement()
+    // enemyTenMovement()
 };
 
 function allMovement(e) {
@@ -174,6 +209,36 @@ function detectHit() {
         && enemyFive.x + enemyFive.width >= player.x
         && enemyFive.y <= player.y + player.height
         && enemyFive.y + enemyFive.height >= player.y) {
+        player.alive = false
+    }
+    if (enemySix.x <= player.x + player.width
+        && enemySix.x + enemySix.width >= player.x
+        && enemySix.y <= player.y + player.height
+        && enemySix.y + enemySix.height >= player.y) {
+        player.alive = false
+    }
+    if (enemySeven.x <= player.x + player.width
+        && enemySeven.x + enemySeven.width >= player.x
+        && enemySeven.y <= player.y + player.height
+        && enemySeven.y + enemySeven.height >= player.y) {
+        player.alive = false
+    }
+    if (enemyEight.x <= player.x + player.width
+        && enemyEight.x + enemyEight.width >= player.x
+        && enemyEight.y <= player.y + player.height
+        && enemyEight.y + enemyEight.height >= player.y) {
+        player.alive = false
+    }
+    if (enemyNine.x <= player.x + player.width
+        && enemyNine.x + enemyNine.width >= player.x
+        && enemyNine.y <= player.y + player.height
+        && enemyNine.y + enemyNine.height >= player.y) {
+        player.alive = false
+    }
+    if (enemyTen.x <= player.x + player.width
+        && enemyTen.x + enemyTen.width >= player.x
+        && enemyTen.y <= player.y + player.height
+        && enemyTen.y + enemyTen.height >= player.y) {
         player.alive = false
     }
 }
