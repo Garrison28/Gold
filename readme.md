@@ -1,7 +1,7 @@
 MVP: Timeline is finish MVP by Tuesday-Wednesday
     Game: Title:"Gold"
         Game will include {html, css , js + canvas}
-        Obective: You, as the player, will roam around a set area looking for the golden objects while having to avoid or fight the enemies that randomly appeaar.
+        Obective: You, as the player, will roam around a set area looking for the golden objects while having to avoid or the enemies that randomly appeaar.
         ToDo: Js {
             create a gameBoard {
                 create a safe area for player at start of game:
