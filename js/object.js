@@ -8,16 +8,12 @@ console.log(game.height)
 game.setAttribute("height", getComputedStyle(game)["height"])
 game.setAttribute("width", getComputedStyle(game)["width"])
 
-// var angle = Math.random(0, 1)
-// var direction = vector(cos(angle), sin(angle))
-
-
 var playerStart = {
     x: 50,
     y: 100,
     width: 25,
     height: 25,
-    color: "gold",
+    color: "blue",
     alive: true,
     velocity: 10,
     gold: 0,
@@ -27,7 +23,7 @@ var playerStart = {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
+// create new enemies with a constructor function
 var enemyOneStart = new Enemy(Math.floor(Math.random() * game.width), 
 Math.floor(Math.random() * game.height), 20)
 var enemyTwoStart = new Enemy(Math.floor(Math.random() * game.width), 
@@ -38,12 +34,16 @@ var enemyFourStart = new Enemy(Math.floor(Math.random() * game.width),
 Math.floor(Math.random() * game.height), 15)
 var enemyFiveStart = new Enemy(Math.floor(Math.random() * game.width), 
 Math.floor(Math.random() * game.height), 25)
-
-var goldenObjStart = new GoldObj(200, 200)
-var goldenObjTwoStart = new GoldObj(400, 50)
-var goldenObjThreeStart = new GoldObj(550, 300)
-var goldenObjFourStart = new GoldObj(700, 400)
-
+// create new golden objects with a constructor function
+var goldenObjStart = new GoldObj(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height))
+var goldenObjTwoStart = new GoldObj(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height))
+var goldenObjThreeStart = new GoldObj(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height))
+var goldenObjFourStart = new GoldObj(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height))
+// constructor function for enemies
 function Enemy(x, y,  velocity) {
     this.x = x
     this.y = y
@@ -60,7 +60,7 @@ function Enemy(x, y,  velocity) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
+// constructor function for golden objects
 function GoldObj(x, y,) {
     this.x = x
     this.y = y,
@@ -73,7 +73,7 @@ function GoldObj(x, y,) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
+// variables for my enemies and golden objects
 let player = { ...playerStart }
 let enemyOne = { ...enemyOneStart }
 let enemyTwo = { ...enemyTwoStart }
