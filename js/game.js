@@ -3,8 +3,10 @@ console.log("Working")
 
 // Game displays based on screen 
 const startDisplay = document.getElementById('startDisplay')
+const levelDisplayOne = document.getElementById('levelDisplayOne')
+const levelDisplayTwo = document.getElementById('levelDisplayTwo')
 const gameDisplayOne = document.getElementById('gameDisplayOne')
-const  loseDisplay = document.getElementById('loseDisplay')
+const loseDisplay = document.getElementById('loseDisplay')
 const winDisplay = document.getElementById('winDisplay')
 /*--------------- Game Assets --------------------*/
 
@@ -29,8 +31,28 @@ function reset() {
     gameInitLevel1()
 }
 
-gameInitLevel1()
+function nextLevel() {
+    console.log('Level 2')
+    player = { ...playerStart }
+    enemyOne = { ...enemyOneStart }
+    enemyTwo = { ...enemyTwoStart }
+    enemyThree = { ...enemyThreeStart }
+    enemyFour = { ...enemyFourStart }
+    enemyFive = {...enemyFiveStart}
+    enemySix = {...enemySixStart}
+    enemySeven = {...enemySevenStart}
+    enemyEight = {...enemyEightStart}
+    enemyNine = {... enemyNineStart}
+    enemyTen = {...enemyTenStart}
+    goldenO = { ...goldenObjStart }
+    goldenOTwo = {...goldenObjTwoStart}
+    goldenOThree = {...goldenObjThreeStart}
+    goldenOFour = {...goldenObjFourStart}
+    gameDisplayOne.style.display = 'block'
+    gameInitLevel2()
+}
 
+gameInitLevel1()
 
 var loop;
 document.addEventListener('keydown', allMovement)
@@ -38,6 +60,8 @@ document.addEventListener('keydown', allMovement)
 function gameInitLevel1() {
     loseDisplay.style.display = 'none'
     winDisplay.style.display = 'none'
+    levelDisplayOne.style.display = 'block'
+    levelDisplayTwo.style.display = 'none'
     document.getElementById('reset').style.display = 'none'
     document.getElementById('level').style.display = 'none'
     //start the gameloop for the game board
@@ -271,4 +295,5 @@ function checkGame() {
     gameLost()
 }
 
+document.getElementById('level').addEventListener('click', nextLevel)
 document.getElementById('reset').addEventListener('click', reset)

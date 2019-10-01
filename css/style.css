@@ -44,6 +44,26 @@ canvas {
     background-color: black;
 }
 
+#levelDisplayOne {
+    height: 60;
+    width: 50%;
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
+    color: gold;
+    background-color: black;
+}
+
+#levelDisplayTwo {
+    height: 60;
+    width: 50%;
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
+    color: gold;
+    background-color: black;
+}
+
 button {
     margin: auto;
     text-align: center;
