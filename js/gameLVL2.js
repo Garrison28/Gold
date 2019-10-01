@@ -19,6 +19,27 @@
 //     gameInitLevel2()
 // }
 
+// function reset2() {
+//     console.log('reset')
+//     player = { ...playerStart }
+//     enemyOne = { ...enemyOneStart }
+//     enemyTwo = { ...enemyTwoStart }
+//     enemyThree = { ...enemyThreeStart }
+//     enemyFour = { ...enemyFourStart }
+//     enemyFive = {...enemyFiveStart}
+//     enemySix = {...enemySixStart}
+//     enemySeven = {...enemySevenStart}
+//     enemyEight = {...enemyEightStart}
+//     enemyNine = {... enemyNineStart}
+//     enemyTen = {...enemyTenStart}
+//     goldenO = { ...goldenObjStart }
+//     goldenOTwo = {...goldenObjTwoStart}
+//     goldenOThree = {...goldenObjThreeStart}
+//     goldenOFour = {...goldenObjFourStart}
+//     gameDisplayOne.style.display = 'block'
+//     gameInitLevel2()
+// }
+
 gameInitLevel2()
 
 var loop;
@@ -109,16 +130,7 @@ function gameInitLevel2() {
         checkGame()
     }
     detectHit()
-    // enemyOneMovement()
-    // enemyTwoMovement()
-    // enemyThreeMovement()
-    // enemyFourMovement()
-    // enemyFiveMovement()
-    // enemySixMovement()
-    // enemySevenMovement()
-    // enemyEightMovement()
-    // enemyNineMovement()
-    // enemyTenMovement()
 };
+
 
 document.getElementById('level').addEventListener('click', nextLevel)

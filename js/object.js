@@ -65,7 +65,7 @@ Math.floor(Math.random() * game.height))
 var goldenObjFourStart = new GoldObj(Math.floor(Math.random() * game.width), 
 Math.floor(Math.random() * game.height))
 // constructor function for enemies
-function Enemy(x, y,  velocity) {
+function Enemy(x, y, velocity) {
     this.x = x
     this.y = y
     this.width = 25

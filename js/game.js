@@ -142,16 +142,6 @@ function gameInitLevel1() {
         checkGame()
     }
     detectHit()
-    // enemyOneMovement()
-    // enemyTwoMovement()
-    // enemyThreeMovement()
-    // enemyFourMovement()
-    // enemyFiveMovement()
-    // enemySixMovement()
-    // enemySevenMovement()
-    // enemyEightMovement()
-    // enemyNineMovement()
-    // enemyTenMovement()
 };
 
 function allMovement(e) {
