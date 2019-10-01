@@ -8,6 +8,7 @@ function reset() {
     enemyTwo = Object.assign({}, enemyTwoStart)
     enemyThree = Object.assign({}, enemyThreeStart)
     enemyFour = Object.assign({}, enemyFourStart)
+    enemyFive = Object.assign({}, enemyFiveStart)
     goldenO = Object.assign({}, goldenObjStart)
     goldenOTwo = Object.assign({}, goldenObjTwoStart)
     goldenOThree = Object.assign({}, goldenObjThreeStart)
@@ -47,6 +48,11 @@ function gameInit() {
             enemyFour.render()
             detectHit()
             enemyFourMovement()
+        }
+        if (enemyFive.alive) {
+            enemyFive.render()
+            detectHit()
+            enemyFiveMovement()
         }
         if (goldenO.alive) {
             goldenO.render()
@@ -163,6 +169,12 @@ function detectHit() {
         && enemyFour.y + enemyFour.height >= player.y) {
         player.alive = false
     }
+    if (enemyFive.x <= player.x + player.width
+        && enemyFive.x + enemyFive.width >= player.x
+        && enemyFive.y <= player.y + player.height
+        && enemyFive.y + enemyFive.height >= player.y) {
+        player.alive = false
+    }
 }
 
 function enemyOneMovement() {
@@ -237,6 +249,25 @@ function enemyFourMovement() {
         enemyFour.velocity *= -1
     }
     enemyFour.y += enemyFour.velocity
+}
+
+function enemyFiveMovement() {
+
+    // if (enemyOne.x > game.width - 25) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.x < 1) {
+    //     enemyOne.xSpeed *= -1;
+    // } else if (enemyOne.y < 1) {
+    //     enemyOne.ySpeed *= -1;
+    // } else if (enemyOne.y > game.height - 25) {
+    //     enemyOne.ySpeed *= -1;
+    // }
+
+
+    if (enemyFive.x < 0 || enemyFive.x > game.width - enemyFive.width) {
+        enemyFive.velocity *= -1
+    }
+    enemyFive.x += enemyFive.velocity
 }
 
 function gameWon() {

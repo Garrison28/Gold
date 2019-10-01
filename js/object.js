@@ -28,122 +28,47 @@ var playerStart = {
     }
 }
 
+var enemyOneStart = new Enemy(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height), 20)
+var enemyTwoStart = new Enemy(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height), 10)
+var enemyThreeStart = new Enemy(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height), 20)
+var enemyFourStart = new Enemy(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height), 15)
+var enemyFiveStart = new Enemy(Math.floor(Math.random() * game.width), 
+Math.floor(Math.random() * game.height), 25)
 
+var goldenObjStart = new GoldObj(200, 200)
+var goldenObjTwoStart = new GoldObj(400, 50)
+var goldenObjThreeStart = new GoldObj(550, 300)
+var goldenObjFourStart = new GoldObj(700, 400)
 
-var enemyOneStart = {
-    x: 280,
-    y: 220,
-    width: 25,
-    height: 25,
-    color: "red",
-    alive: true,
-    velocity: 20,
+function Enemy(x, y,  velocity) {
+    this.x = x
+    this.y = y
+    this.width = 25
+    this.height = 25
+    this.color = "red"
+    this.alive = true
+    this.velocity = velocity
     // xSpeed: 3,
     // ySpeed: 5,
-    health: 50,
-    render: function () {
+    this.health = 50
+    this.render = function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
 
-var enemyTwoStart = {
-    x: 250,
-    y: 175,
-    width: 25,
-    height: 25,
-    color: "red",
-    alive: true,
-    // xSpeed: 3,
-    // ySpeed: 5,
-    velocity: 10,
-    health: 50,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-
-var enemyThreeStart = {
-    x: 500,
-    y: 100,
-    width: 25,
-    height: 25,
-    color: "red",
-    alive: true,
-    // xSpeed: 3,
-    // ySpeed: 5,
-    velocity: 20,
-    health: 50,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-
-var enemyFourStart = {
-    x: 475,
-    y: 300,
-    width: 25,
-    height: 25,
-    color: "red",
-    alive: true,
-    // xSpeed: 3,
-    // ySpeed: 5,
-    velocity: 15,
-    health: 50,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-
-var goldenObjStart = {
-    x: 200,
-    y: 200,
-    width: 15,
-    height: 15,
-    color: "#ffef96",
-    alive: true,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-var goldenObjTwoStart = {
-    x: 400,
-    y: 50,
-    width: 15,
-    height: 15,
-    color: "#ffef96",
-    alive: true,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-
-var goldenObjThreeStart = {
-    x: 550,
-    y: 300,
-    width: 15,
-    height: 15,
-    color: "#ffef96",
-    alive: true,
-    render: function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
-
-var goldenObjFourStart = {
-    x: 700,
-    y: 400,
-    width: 15,
-    height: 15,
-    color: "#ffef96",
-    alive: true,
-    render: function () {
+function GoldObj(x, y,) {
+    this.x = x
+    this.y = y,
+    this.width = 15
+    this.height = 15
+    this.color = "#ffef96"
+    this.alive = true
+    this.render = function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
@@ -154,6 +79,7 @@ let enemyOne = { ...enemyOneStart }
 let enemyTwo = { ...enemyTwoStart }
 let enemyThree = { ...enemyThreeStart }
 let enemyFour = { ...enemyFourStart }
+let enemyFive = {...enemyFiveStart}
 let goldenO = { ...goldenObjStart }
 let goldenOTwo = {...goldenObjTwoStart}
 let goldenOThree = {...goldenObjThreeStart}
