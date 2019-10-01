@@ -1,11 +1,19 @@
+
+
+
 function reset() {
+    console.log('reset')
     player = Object.assign({}, playerStart)
-    enemyOne = Object.assign({}, enemieOneStart)
-    enemyTwo = Object.assign({}, enemieTwoStart)
-    goldenO = Object.assign({}, goldObjStart)
+    enemyOne = Object.assign({}, enemyOneStart)
+    enemyTwo = Object.assign({}, enemyTwoStart)
+    enemyThree = Object.assign({}, enemyThreeStart)
+    enemyFour = Object.assign({}, enemyFourStart)
+    goldenO = Object.assign({}, goldenObjStart)
     goldenOTwo = Object.assign({}, goldenObjTwoStart)
     goldenOThree = Object.assign({}, goldenObjThreeStart)
     goldenOFour = Object.assign({}, goldenObjFourStart)
+    gameDisplayOne.style.display = 'block'
+    gameInit()
 }
 
 var loop;
@@ -14,6 +22,8 @@ document.addEventListener('keydown', allMovement)
 function gameInit() {
     loseDisplay.style.display = 'none'
     winDisplay.style.display = 'none'
+    document.getElementById('reset').style.display = 'none'
+    document.getElementById('level').style.display = 'none'
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
     function gameLoop() {
@@ -235,6 +245,7 @@ function gameWon() {
         document.getElementById('gameDisplayOne').style.display = "none"
         document.getElementById('winDisplay').style.display = "block"
         console.log('you Win!')
+        document.getElementById('level').style.display = 'block'
         clearInterval(loop)
     }
 }
@@ -243,7 +254,7 @@ function gameLost() {
     if (player.alive === false) {
         document.getElementById('gameDisplayOne').style.display = "none"
         document.getElementById('loseDisplay').style.display = "block"
-
+        document.getElementById('reset').style.display = 'block'
         console.log("you Lose")
         clearInterval(loop)
     }
@@ -255,3 +266,5 @@ function checkGame() {
     }
     gameLost()
 }
+
+document.getElementById('reset').addEventListener('click', reset)

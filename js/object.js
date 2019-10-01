@@ -28,7 +28,9 @@ var playerStart = {
     }
 }
 
-var enemieOneStart = {
+
+
+var enemyOneStart = {
     x: 280,
     y: 220,
     width: 25,
@@ -45,7 +47,7 @@ var enemieOneStart = {
     }
 }
 
-var enemieTwoStart = {
+var enemyTwoStart = {
     x: 250,
     y: 175,
     width: 25,
@@ -62,7 +64,7 @@ var enemieTwoStart = {
     }
 }
 
-var enemieThreeStart = {
+var enemyThreeStart = {
     x: 500,
     y: 100,
     width: 25,
@@ -79,7 +81,7 @@ var enemieThreeStart = {
     }
 }
 
-var enemieFourStart = {
+var enemyFourStart = {
     x: 475,
     y: 300,
     width: 25,
@@ -96,7 +98,7 @@ var enemieFourStart = {
     }
 }
 
-var goldObjStart = {
+var goldenObjStart = {
     x: 200,
     y: 200,
     width: 15,
@@ -108,7 +110,7 @@ var goldObjStart = {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-var goldObjTwoStart = {
+var goldenObjTwoStart = {
     x: 400,
     y: 50,
     width: 15,
@@ -121,7 +123,7 @@ var goldObjTwoStart = {
     }
 }
 
-var goldObjThreeStart = {
+var goldenObjThreeStart = {
     x: 550,
     y: 300,
     width: 15,
@@ -134,7 +136,7 @@ var goldObjThreeStart = {
     }
 }
 
-var goldObjFourStart = {
+var goldenObjFourStart = {
     x: 700,
     y: 400,
     width: 15,
@@ -148,11 +150,11 @@ var goldObjFourStart = {
 }
 
 let player = { ...playerStart }
-let enemyOne = { ...enemieOneStart }
-let enemyTwo = { ...enemieTwoStart }
-let enemyThree = { ...enemieThreeStart }
-let enemyFour = { ...enemieFourStart }
-let goldenO = { ...goldObjStart }
-let goldenOTwo = {...goldObjTwoStart}
-let goldenOThree = {...goldObjThreeStart}
-let goldenOFour = {...goldObjFourStart}
+let enemyOne = { ...enemyOneStart }
+let enemyTwo = { ...enemyTwoStart }
+let enemyThree = { ...enemyThreeStart }
+let enemyFour = { ...enemyFourStart }
+let goldenO = { ...goldenObjStart }
+let goldenOTwo = {...goldenObjTwoStart}
+let goldenOThree = {...goldenObjThreeStart}
+let goldenOFour = {...goldenObjFourStart}
