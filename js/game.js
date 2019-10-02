@@ -8,6 +8,7 @@ const levelDisplayTwo = document.getElementById('levelDisplayTwo')
 const gameDisplayOne = document.getElementById('gameDisplayOne')
 const loseDisplay = document.getElementById('loseDisplay')
 const winDisplay = document.getElementById('winDisplay')
+var loop;
 /*--------------- Game Assets --------------------*/
 
 function reset() {
@@ -31,42 +32,45 @@ function reset() {
     gameInitLevel1()
 }
 
-function nextLevel() {
-    console.log('Level 2')
-    player = { ...playerStart }
-    enemyOne = { ...enemyOneStart }
-    enemyTwo = { ...enemyTwoStart }
-    enemyThree = { ...enemyThreeStart }
-    enemyFour = { ...enemyFourStart }
-    enemyFive = {...enemyFiveStart}
-    enemySix = {...enemySixStart}
-    enemySeven = {...enemySevenStart}
-    enemyEight = {...enemyEightStart}
-    enemyNine = {... enemyNineStart}
-    enemyTen = {...enemyTenStart}
-    goldenO = { ...goldenObjStart }
-    goldenOTwo = {...goldenObjTwoStart}
-    goldenOThree = {...goldenObjThreeStart}
-    goldenOFour = {...goldenObjFourStart}
-    gameDisplayOne.style.display = 'block'
-    gameInitLevel2()
-}
+// function nextLevel() {
+//     console.log('Level 2')
+//     player = { ...playerStart }
+//     enemyOne = { ...enemyOneStart }
+//     enemyTwo = { ...enemyTwoStart }
+//     enemyThree = { ...enemyThreeStart }
+//     enemyFour = { ...enemyFourStart }
+//     enemyFive = {...enemyFiveStart}
+//     enemySix = {...enemySixStart}
+//     enemySeven = {...enemySevenStart}
+//     enemyEight = {...enemyEightStart}
+//     enemyNine = {... enemyNineStart}
+//     enemyTen = {...enemyTenStart}
+//     goldenO = { ...goldenObjStart }
+//     goldenOTwo = {...goldenObjTwoStart}
+//     goldenOThree = {...goldenObjThreeStart}
+//     goldenOFour = {...goldenObjFourStart}
+//     gameDisplayOne.style.display = 'block'
+//     gameInitLevel2()
+// }
 
 gameInitLevel1()
 
-var loop;
 document.addEventListener('keydown', allMovement)
 // initilize the game setup
 function gameInitLevel1() {
+    console.log('gameInit1')
     loseDisplay.style.display = 'none'
     winDisplay.style.display = 'none'
     levelDisplayOne.style.display = 'block'
     levelDisplayTwo.style.display = 'none'
+
     document.getElementById('reset').style.display = 'none'
     document.getElementById('level').style.display = 'none'
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
+
     function gameLoop() {
+        // console.log("running game loop...")
         ctx.clearRect(0, 0, game.width, game.height)
         if (enemyOne.alive) {
             enemyOne.render()
@@ -276,6 +280,7 @@ function gameLost() {
         console.log("you Lose")
         clearInterval(loop)
     }
+    player.alive = true;
 }
 
 function checkGame() {
@@ -285,5 +290,11 @@ function checkGame() {
     gameLost()
 }
 
-document.getElementById('level').addEventListener('click', nextLevel)
+function levelComplete() {
+    if(gameWon === true) {
+        
+    }
+}
+
+// document.getElementById('level').addEventListener('click', nextLevel)
 document.getElementById('reset').addEventListener('click', reset)
