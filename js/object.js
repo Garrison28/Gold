@@ -24,15 +24,18 @@ var playerStart = {
     }
 }
 /*---------------TODO work on after finishing lvl 2and 3---------------*/
-// var enemiesArr = []
+// let enemiesArr = []
 
 // var enemies = function() {
 //     for (var i = 0; i <10; i++) {
-//         new Enemy(Math.floor(Math.random() * game.width), 
+//        let red = new Enemy(Math.floor(Math.random() * game.width), 
 //         Math.floor(Math.random() * game.height), Math.floor(Math.random() * Enemy.velocity))
-
+//         red.push(enemiesArr)
 //     }
+//     console.log('enemies created')
 // }
+
+
 /*-----------------------------------------------------------------------*/
 // create new enemies with a constructor function
 var enemyOneStart = new Enemy(Math.floor(Math.random() * game.width), 

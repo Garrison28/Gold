@@ -159,3 +159,9 @@ function enemyTenMovement() {
     enemyTen.y += enemyTen.velocity
 }
 
+// function enemiesMovement() {
+//     if (enemies.x < 0 || enemies.y > game.height - enemies.height) {
+//         enemies.velocity *= -1
+//     }
+//     enemies.y += enemies.velocity
+// }
