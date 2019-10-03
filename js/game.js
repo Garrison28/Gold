@@ -20,42 +20,44 @@ var loop;
 function reset() {
     console.log('reset')
     player = { ...playerStart }
-    enemyOne = { ...enemyOneStart }
-    enemyTwo = { ...enemyTwoStart }
-    enemyThree = { ...enemyThreeStart }
-    enemyFour = { ...enemyFourStart }
-    enemyFive = {...enemyFiveStart}
-    enemySix = {...enemySixStart}
-    enemySeven = {...enemySevenStart}
-    enemyEight = {...enemyEightStart}
-    enemyNine = {... enemyNineStart}
-    enemyTen = {...enemyTenStart}
+    // enemyOne = { ...enemyOneStart }
+    // enemyTwo = { ...enemyTwoStart }
+    // enemyThree = { ...enemyThreeStart }
+    // enemyFour = { ...enemyFourStart }
+    // enemyFive = {...enemyFiveStart}
+    // enemySix = {...enemySixStart}
+    // enemySeven = {...enemySevenStart}
+    // enemyEight = {...enemyEightStart}
+    // enemyNine = {... enemyNineStart}
+    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
-    goldenOTwo = {...goldenObjTwoStart}
-    goldenOThree = {...goldenObjThreeStart}
-    goldenOFour = {...goldenObjFourStart}
+    goldenOTwo = { ...goldenObjTwoStart }
+    goldenOThree = { ...goldenObjThreeStart }
+    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
+    clearArr()
     gameInit()
 }
 // loads level two
 function nextLevel() {
     console.log('Level 2')
     player = { ...playerStart }
-    enemyOne = { ...enemyOneStart }
-    enemyTwo = { ...enemyTwoStart }
-    enemyThree = { ...enemyThreeStart }
-    enemyFour = { ...enemyFourStart }
-    enemyFive = {...enemyFiveStart}
-    enemySix = {...enemySixStart}
-    enemySeven = {...enemySevenStart}
-    enemyEight = {...enemyEightStart}
-    enemyNine = {... enemyNineStart}
-    enemyTen = {...enemyTenStart}
+    // enemyOne = { ...enemyOneStart }
+    // enemyTwo = { ...enemyTwoStart }
+    // enemyThree = { ...enemyThreeStart }
+    // enemyFour = { ...enemyFourStart }
+    // enemyFive = {...enemyFiveStart}
+    // enemySix = {...enemySixStart}
+    // enemySeven = {...enemySevenStart}
+    // enemyEight = {...enemyEightStart}
+    // enemyNine = {... enemyNineStart}
+    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
-    goldenOTwo = {...goldenObjTwoStart}
-    goldenOThree = {...goldenObjThreeStart}
-    goldenOFour = {...goldenObjFourStart}
+    goldenOTwo = { ...goldenObjTwoStart }
+    goldenOThree = { ...goldenObjThreeStart }
+    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
+    clearArr()
     gameInit()
     levelDisplayOne.style.display = 'none'
     levelDisplayTwo.style.display = 'block'
@@ -66,22 +68,22 @@ function finalLevel() {
     console.log('level 3')
     console.log(levelCounter)
     player = { ...playerStart }
-    enemyOne = { ...enemyOneStart }
-    enemyTwo = { ...enemyTwoStart }
-    enemyThree = { ...enemyThreeStart }
-    enemyFour = { ...enemyFourStart }
-    enemyFive = {...enemyFiveStart}
-    enemySix = {...enemySixStart}
-    enemySeven = {...enemySevenStart}
-    enemyEight = {...enemyEightStart}
-    enemyNine = {... enemyNineStart}
-    enemyTen = {...enemyTenStart}
+    // enemyOne = { ...enemyOneStart }
+    // enemyTwo = { ...enemyTwoStart }
+    // enemyThree = { ...enemyThreeStart }
+    // enemyFour = { ...enemyFourStart }
+    // enemyFive = {...enemyFiveStart}
+    // enemySix = {...enemySixStart}
+    // enemySeven = {...enemySevenStart}
+    // enemyEight = {...enemyEightStart}
+    // enemyNine = {... enemyNineStart}
+    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
-    goldenOTwo = {...goldenObjTwoStart}
-    goldenOThree = {...goldenObjThreeStart}
-    goldenOFour = {...goldenObjFourStart}
-    enemies()
+    goldenOTwo = { ...goldenObjTwoStart }
+    goldenOThree = { ...goldenObjThreeStart }
+    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
+    clearArr()
     gameInit()
     levelDisplayOne.style.display = 'none'
     levelDisplayTwo.style.display = 'none'
@@ -105,62 +107,20 @@ function gameInit() {
     levelThreeButton.style.display = 'none'
     resetButton.style.display = 'none'
     levelCounter
+    createEnemies()
+    console.log(enemy)
+    console.log(enemyMovement)
+    enemiesArr
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
-
     function gameLoop() {
         // console.log("running game loop...")
         ctx.clearRect(0, 0, game.width, game.height)
-        if (enemyOne.alive) {
-            enemyOne.render()
-            detectHit()
-            enemyOneMovement()
-        }
-        if (enemyTwo.alive) {
-            enemyTwo.render()
-            detectHit()
-            enemyTwoMovement()
-        }
-        if (enemyThree.alive) {
-            enemyThree.render()
-            detectHit()
-            enemyThreeMovement()
-        }
-        if (enemyFour.alive) {
-            enemyFour.render()
-            detectHit()
-            enemyFourMovement()
-        }
-        if (enemyFive.alive) {
-            enemyFive.render()
-            detectHit()
-            enemyFiveMovement()
-        }
-        if (enemySix.alive) {
-            enemySix.render()
-            detectHit()
-            enemySixMovement()
-        }
-        if (enemySeven.alive) {
-            enemySeven.render()
-            detectHit()
-            enemySevenMovement()
-        }
-        if (enemyEight.alive) {
-            enemyEight.render()
-            detectHit()
-            enemyEightMovement()
-        }
-        if (enemyNine.alive) {
-            enemyNine.render()
-            detectHit()
-            enemyNineMovement()
-        }
-        if (enemyTen.alive) {
-            enemyTen.render()
-            detectHit()
-            enemyTenMovement()
-        }
+
+        enemiesArr.forEach(enemy => {
+            enemy.render()
+            enemyMovement()
+        })
         if (goldenO.alive) {
             goldenO.render()
             detectHit()
@@ -184,7 +144,6 @@ function gameInit() {
         }
         checkGame()
         buttonSwitch()
-        endGame()
     }
     detectHit()
 };
@@ -239,70 +198,18 @@ function detectHit() {
         && player.y + player.height > goldenOFour.y) {
         goldenOFour.alive = false
     }
-    if (enemyOne.x <= player.x + player.width
-        && enemyOne.x + enemyOne.width >= player.x
-        && enemyOne.y <= player.y + player.height
-        && enemyOne.y + enemyOne.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyTwo.x <= player.x + player.width
-        && enemyTwo.x + enemyTwo.width >= player.x
-        && enemyTwo.y <= player.y + player.height
-        && enemyTwo.y + enemyTwo.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyThree.x <= player.x + player.width
-        && enemyThree.x + enemyThree.width >= player.x
-        && enemyThree.y <= player.y + player.height
-        && enemyThree.y + enemyThree.height >= player.y) {
-        player.alive = false
-
-    }
-    if (enemyFour.x <= player.x + player.width
-        && enemyFour.x + enemyFour.width >= player.x
-        && enemyFour.y <= player.y + player.height
-        && enemyFour.y + enemyFour.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyFive.x <= player.x + player.width
-        && enemyFive.x + enemyFive.width >= player.x
-        && enemyFive.y <= player.y + player.height
-        && enemyFive.y + enemyFive.height >= player.y) {
-        player.alive = false
-    }
-    if (enemySix.x <= player.x + player.width
-        && enemySix.x + enemySix.width >= player.x
-        && enemySix.y <= player.y + player.height
-        && enemySix.y + enemySix.height >= player.y) {
-        player.alive = false
-    }
-    if (enemySeven.x <= player.x + player.width
-        && enemySeven.x + enemySeven.width >= player.x
-        && enemySeven.y <= player.y + player.height
-        && enemySeven.y + enemySeven.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyEight.x <= player.x + player.width
-        && enemyEight.x + enemyEight.width >= player.x
-        && enemyEight.y <= player.y + player.height
-        && enemyEight.y + enemyEight.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyNine.x <= player.x + player.width
-        && enemyNine.x + enemyNine.width >= player.x
-        && enemyNine.y <= player.y + player.height
-        && enemyNine.y + enemyNine.height >= player.y) {
-        player.alive = false
-    }
-    if (enemyTen.x <= player.x + player.width
-        && enemyTen.x + enemyTen.width >= player.x
-        && enemyTen.y <= player.y + player.height
-        && enemyTen.y + enemyTen.height >= player.y) {
-        player.alive = false
-    }
+    enemiesArr.forEach(enemy => {
+        if (enemy.x <= player.x + player.width
+            && enemy.x + enemy.width >= player.x
+            && enemy.y <= player.y + player.height
+            && enemy.y + enemy.height >= player.y) {
+            player.alive = false
+        }
+        
+    });
 }
 
-let gameWon = function() {
+let gameWon = function () {
     if (goldenO.alive === false && goldenOTwo.alive === false
         && goldenOThree.alive === false && goldenOFour.alive === false) {
         if (levelCounter === 0) {
@@ -314,6 +221,10 @@ let gameWon = function() {
             levelCounter = 2
             levelButton.style.display = 'none'
             levelThreeButton.style.display = 'block'
+        } else if (levelCounter === 2) {
+            levelCounter = 3
+            gameComplete.style.display = 'block'
+            resetButton.style.display = 'block'
         }
         gameDisplayOne.style.display = "none"
         winDisplay.style.display = "block"
@@ -324,7 +235,7 @@ let gameWon = function() {
     return true
 }
 
-let gameLost = function() {
+let gameLost = function () {
     if (player.alive === false) {
         if (levelCounter === 1 || levelCounter === 2) {
             levelCounter = 0
@@ -336,7 +247,7 @@ let gameLost = function() {
         console.log(levelCounter)
         clearInterval(loop)
     }
-    player.alive = true;
+    player.alive === true;
 }
 
 function checkGame() {
@@ -351,14 +262,7 @@ function buttonSwitch() {
         levelButton.style.display = 'none'
         levelThreeButton.style.display = 'block'
     }
-    
-}
 
-let endGame = function() {
-    if (levelCounter === 2 && gameWon === true) {
-        gameComplete.style.display = 'block'
-        clearInterval(loop)
-    }
 }
 
 document.getElementById('level').addEventListener('click', nextLevel)
