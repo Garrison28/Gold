@@ -17,23 +17,22 @@ var playerStart = {
     alive: true,
     velocity: 10,
     gold: 0,
-    health: 100,
     render: function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
 /*---------------TODO work on after finishing lvl 2and 3---------------*/
-// let enemiesArr = []
+let enemiesArr = []
 
-// var enemies = function() {
-//     for (var i = 0; i <10; i++) {
-//        let red = new Enemy(Math.floor(Math.random() * game.width), 
-//         Math.floor(Math.random() * game.height), Math.floor(Math.random() * Enemy.velocity))
-//         red.push(enemiesArr)
-//     }
-//     console.log('enemies created')
-// }
+var enemies = function() {
+    for (var i = 0; i <10; i++) {
+        red = new Enemy(Math.floor(Math.random() * game.width), 
+        Math.floor(Math.random() * game.height), Math.floor(Math.random() * Enemy.velocity))
+        red.push(enemiesArr)
+    }
+    console.log('enemies created')
+}
 
 
 /*-----------------------------------------------------------------------*/
@@ -73,12 +72,9 @@ function Enemy(x, y, velocity) {
     this.y = y
     this.width = 25
     this.height = 25
-    this.color = "red"
+    this.color = "#82b74b"
     this.alive = true
     this.velocity = velocity
-    // xSpeed: 3,
-    // ySpeed: 5,
-    this.health = 50
     this.render = function () {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
@@ -90,7 +86,7 @@ function GoldObj(x, y,) {
     this.y = y,
     this.width = 15
     this.height = 15
-    this.color = "#ffef96"
+    this.color = "gold"
     this.alive = true
     this.render = function () {
         ctx.fillStyle = this.color

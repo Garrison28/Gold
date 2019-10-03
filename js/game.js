@@ -15,8 +15,8 @@ const levelButton = document.getElementById('level')
 const levelThreeButton = document.getElementById('lastLevel')
 let levelCounter = 0
 var loop;
-/*--------------- Game Assets --------------------*/
-
+/*--------------- Game Functions --------------------*/
+// resets game to level one
 function reset() {
     console.log('reset')
     player = { ...playerStart }
@@ -37,7 +37,7 @@ function reset() {
     gameDisplayOne.style.display = 'block'
     gameInit()
 }
-
+// loads level two
 function nextLevel() {
     console.log('Level 2')
     player = { ...playerStart }
@@ -61,7 +61,7 @@ function nextLevel() {
     levelDisplayTwo.style.display = 'block'
     levelDisplayThree.style.display = 'none'
 }
-
+// loads level three
 function finalLevel() {
     console.log('level 3')
     console.log(levelCounter)
@@ -80,6 +80,7 @@ function finalLevel() {
     goldenOTwo = {...goldenObjTwoStart}
     goldenOThree = {...goldenObjThreeStart}
     goldenOFour = {...goldenObjFourStart}
+    enemies()
     gameDisplayOne.style.display = 'block'
     gameInit()
     levelDisplayOne.style.display = 'none'
@@ -110,10 +111,6 @@ function gameInit() {
     function gameLoop() {
         // console.log("running game loop...")
         ctx.clearRect(0, 0, game.width, game.height)
-        // if (enemies.alive) {
-        //     enemies.render()
-        //     detectHit()
-        // };
         if (enemyOne.alive) {
             enemyOne.render()
             detectHit()
@@ -190,8 +187,6 @@ function gameInit() {
         endGame()
     }
     detectHit()
-    
-    // levelComplete()
 };
 
 function allMovement(e) {
@@ -244,12 +239,6 @@ function detectHit() {
         && player.y + player.height > goldenOFour.y) {
         goldenOFour.alive = false
     }
-    // if (enemiesArr.x <= player.x + player.width
-    //     && enemiesArr.x + enemiesArr.width >= player.x
-    //     && enemiesArr.y <= player.y +player.height
-    //     && enemiesArr.y + enemiesArr.height >= player.y) {
-    //         player.alive = false
-    //     }
     if (enemyOne.x <= player.x + player.width
         && enemyOne.x + enemyOne.width >= player.x
         && enemyOne.y <= player.y + player.height
