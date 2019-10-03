@@ -20,16 +20,6 @@ var loop;
 function reset() {
     console.log('reset')
     player = { ...playerStart }
-    // enemyOne = { ...enemyOneStart }
-    // enemyTwo = { ...enemyTwoStart }
-    // enemyThree = { ...enemyThreeStart }
-    // enemyFour = { ...enemyFourStart }
-    // enemyFive = {...enemyFiveStart}
-    // enemySix = {...enemySixStart}
-    // enemySeven = {...enemySevenStart}
-    // enemyEight = {...enemyEightStart}
-    // enemyNine = {... enemyNineStart}
-    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
     goldenOThree = { ...goldenObjThreeStart }
@@ -42,16 +32,6 @@ function reset() {
 function nextLevel() {
     console.log('Level 2')
     player = { ...playerStart }
-    // enemyOne = { ...enemyOneStart }
-    // enemyTwo = { ...enemyTwoStart }
-    // enemyThree = { ...enemyThreeStart }
-    // enemyFour = { ...enemyFourStart }
-    // enemyFive = {...enemyFiveStart}
-    // enemySix = {...enemySixStart}
-    // enemySeven = {...enemySevenStart}
-    // enemyEight = {...enemyEightStart}
-    // enemyNine = {... enemyNineStart}
-    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
     goldenOThree = { ...goldenObjThreeStart }
@@ -68,16 +48,6 @@ function finalLevel() {
     console.log('level 3')
     console.log(levelCounter)
     player = { ...playerStart }
-    // enemyOne = { ...enemyOneStart }
-    // enemyTwo = { ...enemyTwoStart }
-    // enemyThree = { ...enemyThreeStart }
-    // enemyFour = { ...enemyFourStart }
-    // enemyFive = {...enemyFiveStart}
-    // enemySix = {...enemySixStart}
-    // enemySeven = {...enemySevenStart}
-    // enemyEight = {...enemyEightStart}
-    // enemyNine = {... enemyNineStart}
-    // enemyTen = {...enemyTenStart}
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
     goldenOThree = { ...goldenObjThreeStart }
