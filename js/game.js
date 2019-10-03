@@ -6,6 +6,7 @@ const startDisplay = document.getElementById('startDisplay')
 const levelDisplayOne = document.getElementById('levelDisplayOne')
 const levelDisplayTwo = document.getElementById('levelDisplayTwo')
 const levelDisplayThree = document.getElementById('levelDisplayThree')
+const gameComplete = document.getElementById('gameComplete')
 const gameDisplayOne = document.getElementById('gameDisplayOne')
 const loseDisplay = document.getElementById('loseDisplay')
 const winDisplay = document.getElementById('winDisplay')
@@ -59,13 +60,11 @@ function nextLevel() {
     levelDisplayOne.style.display = 'none'
     levelDisplayTwo.style.display = 'block'
     levelDisplayThree.style.display = 'none'
-    levelButton.style.display = 'none'
-    levelThreeButton.style.display = 'block'
-    
 }
 
 function finalLevel() {
     console.log('level 3')
+    console.log(levelCounter)
     player = { ...playerStart }
     enemyOne = { ...enemyOneStart }
     enemyTwo = { ...enemyTwoStart }
@@ -100,9 +99,11 @@ function gameInit() {
     levelDisplayOne.style.display = 'block'
     levelDisplayTwo.style.display = 'none'
     levelDisplayThree.style.display = 'none'
+    gameComplete.style.display = 'none'
     levelButton.style.display = 'none'
     levelThreeButton.style.display = 'none'
     resetButton.style.display = 'none'
+    levelCounter
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
 
@@ -185,8 +186,11 @@ function gameInit() {
 
         }
         checkGame()
+        buttonSwitch()
+        endGame()
     }
     detectHit()
+    
     // levelComplete()
 };
 
@@ -309,24 +313,38 @@ function detectHit() {
     }
 }
 
-function gameWon() {
+let gameWon = function() {
     if (goldenO.alive === false && goldenOTwo.alive === false
         && goldenOThree.alive === false && goldenOFour.alive === false) {
-        // levelCounter++
+        if (levelCounter === 0) {
+            levelCounter = 1
+            levelButton.style.display = 'block'
+            levelThreeButton.style.display = 'none'
+        }
+        else if (levelCounter === 1) {
+            levelCounter = 2
+            levelButton.style.display = 'none'
+            levelThreeButton.style.display = 'block'
+        }
         gameDisplayOne.style.display = "none"
         winDisplay.style.display = "block"
-        levelButton.style.display = 'block'
         console.log('you Win!')
+        console.log(levelCounter)
         clearInterval(loop)
     }
+    return true
 }
 
-function gameLost() {
+let gameLost = function() {
     if (player.alive === false) {
+        if (levelCounter === 1 || levelCounter === 2) {
+            levelCounter = 0
+        }
         gameDisplayOne.style.display = "none"
         loseDisplay.style.display = "block"
         resetButton.style.display = 'block'
         console.log("you Lose")
+        console.log(levelCounter)
         clearInterval(loop)
     }
     player.alive = true;
@@ -340,7 +358,18 @@ function checkGame() {
 }
 
 function buttonSwitch() {
-    if ()
+    if (levelCounter === 1 && gameWon === true) {
+        levelButton.style.display = 'none'
+        levelThreeButton.style.display = 'block'
+    }
+    
+}
+
+let endGame = function() {
+    if (levelCounter === 2 && gameWon === true) {
+        gameComplete.style.display = 'block'
+        clearInterval(loop)
+    }
 }
 
 document.getElementById('level').addEventListener('click', nextLevel)

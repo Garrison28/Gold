@@ -44,6 +44,15 @@ canvas {
     background-color: black;
 }
 
+#gameComplete {
+    height: 100;
+    width: 100%;
+    font-size: 100px;
+    text-align: center;
+    color: gold;
+    background-color: black;
+}
+
 #levelDisplayOne {
     height: 60;
     width: 50%;
