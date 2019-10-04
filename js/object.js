@@ -28,7 +28,7 @@ let enemy;
 let enemiesArr = []
 
 var createEnemies = function() {
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         enemy = new Enemy(Math.floor(Math.random() * game.width),
             Math.floor(Math.random() * game.height), Math.ceil(Math.random() * 40))
         enemiesArr.push(enemy)

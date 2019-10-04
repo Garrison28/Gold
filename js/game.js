@@ -64,7 +64,7 @@ function gameInit() {
     levelThreeButton.style.display = 'none'
     resetButton.style.display = 'none'
     levelCounter
-    // createEnemies()
+    createEnemies()
     createGold()
     enemiesArr
     //start the gameloop for the game board
