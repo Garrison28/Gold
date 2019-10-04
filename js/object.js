@@ -27,14 +27,12 @@ let enemy;
 
 let enemiesArr = []
 
-var createEnemies = function() {
-    for (var i = 0; i <5; i++) {
-        enemy = new Enemy(Math.floor(Math.random() * game.width), 
-        Math.floor(Math.random() * game.height), Math.ceil(Math.random() * 40))
+var createEnemies = function () {
+    for (var i = 0; i < 5; i++) {
+        enemy = new Enemy(Math.floor(Math.random() * game.width),
+            Math.floor(Math.random() * game.height), Math.ceil(Math.random() * 40))
         enemiesArr.push(enemy)
-        console.log(enemy)
     }
-    console.log('enemies created')
 }
 
 function clearArr() {
@@ -43,14 +41,14 @@ function clearArr() {
 
 
 /*-----------------------------------------------------------------------*/
-var goldenObjStart = new GoldObj(Math.floor(Math.random() * game.width), 
-Math.floor(Math.random() * game.height))
-var goldenObjTwoStart = new GoldObj(Math.floor(Math.random() * game.width), 
-Math.floor(Math.random() * game.height))
-var goldenObjThreeStart = new GoldObj(Math.floor(Math.random() * game.width), 
-Math.floor(Math.random() * game.height))
-var goldenObjFourStart = new GoldObj(Math.floor(Math.random() * game.width), 
-Math.floor(Math.random() * game.height))
+var goldenObjStart = new GoldObj(Math.floor(Math.random() * game.width),
+    Math.floor(Math.random() * game.height))
+var goldenObjTwoStart = new GoldObj(Math.floor(Math.random() * game.width),
+    Math.floor(Math.random() * game.height))
+var goldenObjThreeStart = new GoldObj(Math.floor(Math.random() * game.width),
+    Math.floor(Math.random() * game.height))
+var goldenObjFourStart = new GoldObj(Math.floor(Math.random() * game.width),
+    Math.floor(Math.random() * game.height))
 // constructor function for enemies
 function Enemy(x, y, velocity) {
     this.x = x
@@ -68,10 +66,10 @@ function Enemy(x, y, velocity) {
     }
 }
 // constructor function for golden objects
-function GoldObj(x, y,) {
+function GoldObj(x, y, ) {
     this.x = x
     this.y = y,
-    this.width = 15
+        this.width = 15
     this.height = 15
     this.color = "gold"
     this.alive = true
@@ -83,6 +81,6 @@ function GoldObj(x, y,) {
 // variables for my enemies and golden objects
 let player = { ...playerStart }
 let goldenO = { ...goldenObjStart }
-let goldenOTwo = {...goldenObjTwoStart}
-let goldenOThree = {...goldenObjThreeStart}
-let goldenOFour = {...goldenObjFourStart}
+let goldenOTwo = { ...goldenObjTwoStart }
+let goldenOThree = { ...goldenObjThreeStart }
+let goldenOFour = { ...goldenObjFourStart }

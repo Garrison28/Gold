@@ -18,7 +18,6 @@ var loop;
 /*--------------- Game Functions --------------------*/
 // resets game to level one
 function reset() {
-    console.log('reset')
     player = { ...playerStart }
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
@@ -30,7 +29,6 @@ function reset() {
 }
 // loads level two
 function nextLevel() {
-    console.log('Level 2')
     player = { ...playerStart }
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
@@ -45,8 +43,6 @@ function nextLevel() {
 }
 // loads level three
 function finalLevel() {
-    console.log('level 3')
-    console.log(levelCounter)
     player = { ...playerStart }
     goldenO = { ...goldenObjStart }
     goldenOTwo = { ...goldenObjTwoStart }
@@ -78,8 +74,6 @@ function gameInit() {
     resetButton.style.display = 'none'
     levelCounter
     createEnemies()
-    console.log(enemy)
-    console.log(enemyMovement)
     enemiesArr
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
@@ -175,7 +169,7 @@ function detectHit() {
             && enemy.y + enemy.height >= player.y) {
             player.alive = false
         }
-        
+
     });
 }
 
@@ -198,8 +192,6 @@ let gameWon = function () {
         }
         gameDisplayOne.style.display = "none"
         winDisplay.style.display = "block"
-        console.log('you Win!')
-        console.log(levelCounter)
         clearInterval(loop)
     }
     return true
@@ -213,8 +205,6 @@ let gameLost = function () {
         gameDisplayOne.style.display = "none"
         loseDisplay.style.display = "block"
         resetButton.style.display = 'block'
-        console.log("you Lose")
-        console.log(levelCounter)
         clearInterval(loop)
     }
     player.alive === true;
