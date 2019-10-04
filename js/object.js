@@ -22,12 +22,12 @@ var playerStart = {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-/*---------------TODO work on after finishing lvl 2and 3---------------*/
+/*---------------function for creating gold and enemies---------------*/
 let enemy;
 
 let enemiesArr = []
 
-var createEnemies = function () {
+var createEnemies = function() {
     for (var i = 0; i < 10; i++) {
         enemy = new Enemy(Math.floor(Math.random() * game.width),
             Math.floor(Math.random() * game.height), Math.ceil(Math.random() * 40))
@@ -35,21 +35,27 @@ var createEnemies = function () {
     }
 }
 
-function clearArr() {
+function clearEnemiesArr() {
     enemiesArr = []
 }
 
+let gold;
+
+let goldArr = []
+
+var createGold = function() {
+    for (var g = 0; g < 7; g++) {
+        gold = new GoldObj(Math.floor(Math.random() * game.width),
+            Math.floor(Math.random() * game.height))
+        goldArr.push(gold)
+    }
+}
+
+function clearGoldArr() {
+    goldArr = []
+}
 
 /*-----------------------------------------------------------------------*/
-var goldenObjStart = new GoldObj(Math.floor(Math.random() * game.width),
-    Math.floor(Math.random() * game.height))
-var goldenObjTwoStart = new GoldObj(Math.floor(Math.random() * game.width),
-    Math.floor(Math.random() * game.height))
-var goldenObjThreeStart = new GoldObj(Math.floor(Math.random() * game.width),
-    Math.floor(Math.random() * game.height))
-var goldenObjFourStart = new GoldObj(Math.floor(Math.random() * game.width),
-    Math.floor(Math.random() * game.height))
-// constructor function for enemies
 function Enemy(x, y, velocity) {
     this.x = x
     this.y = y
@@ -66,7 +72,7 @@ function Enemy(x, y, velocity) {
     }
 }
 // constructor function for golden objects
-function GoldObj(x, y, ) {
+function GoldObj(x, y) {
     this.x = x
     this.y = y,
         this.width = 15
@@ -79,8 +85,5 @@ function GoldObj(x, y, ) {
     }
 }
 // variables for my enemies and golden objects
-let player = { ...playerStart }
-let goldenO = { ...goldenObjStart }
-let goldenOTwo = { ...goldenObjTwoStart }
-let goldenOThree = { ...goldenObjThreeStart }
-let goldenOFour = { ...goldenObjFourStart }
+let player = {...playerStart}
+

@@ -19,23 +19,17 @@ var loop;
 // resets game to level one
 function reset() {
     player = { ...playerStart }
-    goldenO = { ...goldenObjStart }
-    goldenOTwo = { ...goldenObjTwoStart }
-    goldenOThree = { ...goldenObjThreeStart }
-    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
-    clearArr()
+    clearEnemiesArr()
+    clearGoldArr()
     gameInit()
 }
 // loads level two
 function nextLevel() {
     player = { ...playerStart }
-    goldenO = { ...goldenObjStart }
-    goldenOTwo = { ...goldenObjTwoStart }
-    goldenOThree = { ...goldenObjThreeStart }
-    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
-    clearArr()
+    clearEnemiesArr()
+    clearGoldArr()
     gameInit()
     levelDisplayOne.style.display = 'none'
     levelDisplayTwo.style.display = 'block'
@@ -44,12 +38,9 @@ function nextLevel() {
 // loads level three
 function finalLevel() {
     player = { ...playerStart }
-    goldenO = { ...goldenObjStart }
-    goldenOTwo = { ...goldenObjTwoStart }
-    goldenOThree = { ...goldenObjThreeStart }
-    goldenOFour = { ...goldenObjFourStart }
     gameDisplayOne.style.display = 'block'
-    clearArr()
+    clearEnemiesArr()
+    clearGoldArr()
     gameInit()
     levelDisplayOne.style.display = 'none'
     levelDisplayTwo.style.display = 'none'
@@ -73,10 +64,12 @@ function gameInit() {
     levelThreeButton.style.display = 'none'
     resetButton.style.display = 'none'
     levelCounter
-    createEnemies()
+    // createEnemies()
+    createGold()
     enemiesArr
     //start the gameloop for the game board
     loop = setInterval(gameLoop, 60)
+
     function gameLoop() {
         // console.log("running game loop...")
         ctx.clearRect(0, 0, game.width, game.height)
@@ -85,22 +78,9 @@ function gameInit() {
             enemy.render()
             enemyMovement()
         })
-        if (goldenO.alive) {
-            goldenO.render()
-            detectHit()
-        }
-        if (goldenOTwo.alive) {
-            goldenOTwo.render()
-            detectHit()
-        }
-        if (goldenOThree.alive) {
-            goldenOThree.render()
-            detectHit()
-        }
-        if (goldenOFour.alive) {
-            goldenOFour.render()
-            detectHit()
-        }
+        goldArr.forEach(gold => {
+            gold.render()
+        })
         if (player.alive) {
             player.render()
             detectHit()
@@ -138,30 +118,14 @@ function allMovement(e) {
 }
 
 function detectHit() {
-    if (player.x <= goldenO.x + goldenO.width
-        && player.x + player.width >= goldenO.x
-        && player.y <= goldenO.y + goldenO.height
-        && player.y + player.height > goldenO.y) {
-        goldenO.alive = false
-    }
-    if (player.x <= goldenOTwo.x + goldenOTwo.width
-        && player.x + player.width >= goldenOTwo.x
-        && player.y <= goldenOTwo.y + goldenOTwo.height
-        && player.y + player.height > goldenOTwo.y) {
-        goldenOTwo.alive = false
-    }
-    if (player.x <= goldenOThree.x + goldenOThree.width
-        && player.x + player.width >= goldenOThree.x
-        && player.y <= goldenOThree.y + goldenOThree.height
-        && player.y + player.height > goldenOThree.y) {
-        goldenOThree.alive = false
-    }
-    if (player.x <= goldenOFour.x + goldenOFour.width
-        && player.x + player.width >= goldenOFour.x
-        && player.y <= goldenOFour.y + goldenOFour.height
-        && player.y + player.height > goldenOFour.y) {
-        goldenOFour.alive = false
-    }
+    goldArr.forEach((gold, i) => {
+        if (player.x <= gold.x + gold.width
+            && player.x + player.width >= gold.x
+            && player.y <= gold.y + gold.height
+            && player.y + player.height > gold.y) {
+            goldArr.splice(i, 1)
+        }
+    })
     enemiesArr.forEach(enemy => {
         if (enemy.x <= player.x + player.width
             && enemy.x + enemy.width >= player.x
@@ -174,26 +138,25 @@ function detectHit() {
 }
 
 let gameWon = function () {
-    if (goldenO.alive === false && goldenOTwo.alive === false
-        && goldenOThree.alive === false && goldenOFour.alive === false) {
-        if (levelCounter === 0) {
-            levelCounter = 1
-            levelButton.style.display = 'block'
-            levelThreeButton.style.display = 'none'
-        }
-        else if (levelCounter === 1) {
-            levelCounter = 2
-            levelButton.style.display = 'none'
-            levelThreeButton.style.display = 'block'
-        } else if (levelCounter === 2) {
-            levelCounter = 3
-            gameComplete.style.display = 'block'
-            resetButton.style.display = 'block'
-        }
-        gameDisplayOne.style.display = "none"
-        winDisplay.style.display = "block"
-        clearInterval(loop)
+
+    if (levelCounter === 0) {
+        levelCounter = 1
+        levelButton.style.display = 'block'
+        levelThreeButton.style.display = 'none'
     }
+    else if (levelCounter === 1) {
+        levelCounter = 2
+        levelButton.style.display = 'none'
+        levelThreeButton.style.display = 'block'
+    } else if (levelCounter === 2) {
+        levelCounter = 3
+        gameComplete.style.display = 'block'
+        resetButton.style.display = 'block'
+    }
+    gameDisplayOne.style.display = "none"
+    winDisplay.style.display = "block"
+    clearInterval(loop)
+
     return true
 }
 
@@ -211,7 +174,7 @@ let gameLost = function () {
 }
 
 function checkGame() {
-    if (player.alive === true) {
+    if (player.alive === true && goldArr.length === 0) {
         gameWon()
     }
     gameLost()
