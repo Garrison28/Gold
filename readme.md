@@ -1,28 +1,52 @@
 MVP: Timeline is finish MVP by Tuesday-Wednesday
 Game: Title:"Gold"
+
 Game will include {html, css , js + canvas}
+
 Obective: You, as the player, will roam around a set area looking for the golden objects while having to avoid or the enemies that randomly appeaar.
+
 ToDo: Js 
+
 create a gameBoard 
+
 randomly spawn enemies and gold:
+
 have a gameWon function 
+
 winning conditions should be when player has collected all the gold pieces:
+
 STRETCH GOAL 
+
 have player defeat all enemies after gold pieces have been collected:
+
 create a player
+
 have hp: 100,
+
 create enemies 
-create a collision detection function 
+
+create a collision detection function
+
 1 collision detection function for gold 
+
 1 collision detection function for attacking enemies and vise verca 
+
 create an object list for gold items;
+
 Stretch goals 
+
 roaming enemies
+
 move in circular patter along x and y axis:
+
 detect when player is close to both gold and enemy and have the enemy follow and attack player:
+
 animations 
+
 download sprites for animations:
+
 melee animations to have player and enemies swing sword:
+
 local storage highscore saving:
 
 Day 1-3: Got my basic game logic going, having difficulties with dry coding and running multiple js files. Day 1 was spent getting my player, enemies and golden objects spawning on the canvas grid. 
